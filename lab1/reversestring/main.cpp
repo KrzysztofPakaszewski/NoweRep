@@ -8,7 +8,7 @@ int main()
 {
     string input = "Wyraz";
     cout << input<< endl;
-    cout << reverse(input)<< endl;
+    cout << Reverse(input)<< endl;
     return 0;
 }
 

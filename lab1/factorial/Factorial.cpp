@@ -4,6 +4,8 @@
 #include <climits>
 #include "Factorial.h"
 
+bool CheckOverFlow(int value, int temp);
+
 int positive(int a)
 {
     if (a<0)
@@ -11,25 +13,27 @@ int positive(int a)
     return a;
 }
 
-int factorial(int value) { // Recursive
+int Factorial(int value) { // Recursive
     int temp;
     if(value> 1000)
         return 0;
     if (value<0) {
         if (value == -1)
             return -1;
-        temp = factorial(value + 1);
+        temp = Factorial(value + 1);
     }
     else if(value== 0 || value == 1) {
         return 1;
     }
     else
-        temp = factorial(value - 1);
-    if(positive(temp)> INT_MAX/positive(value))
+        temp = Factorial(value - 1);
+    if(CheckOverFlow(value, temp))
         return 0;
     else
         return temp*value;
 }
+
+bool CheckOverFlow(int value, int temp) { return positive(temp) > INT_MAX / positive(value); }
 
 int factorialIT(int value) // iteration
 {
