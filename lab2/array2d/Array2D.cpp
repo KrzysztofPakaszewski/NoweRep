@@ -41,6 +41,6 @@ void DrawTable(int ** array, int n_rows, int n_columns)
 void DeleteArray2D(int ** array, int n_rows, int n_columns)
 {
     for(int a = 0; a< n_rows;a++)
-        delete array[a];
-    delete array;
+        delete[] array[a];
+    delete[] array;
 }
