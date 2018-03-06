@@ -8,6 +8,5 @@ using namespace std;
 
 int main()
 {
-    cout << sizeof(ForwardList) << endl;
     return 0;
 }
