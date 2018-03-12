@@ -3,18 +3,8 @@
 //
 
 #include "DoubleBasePalindromes.h"
+#include "../palindrome/Palindrome.h"
 
-bool is_palindrome(string str)
-{
-    int number = int(str.size());
-    int middle = int(number/2);
-    for(int a = 0; a<middle; a++)
-    {
-        if(str[a] != str[number-1-a])
-            return false;
-    }
-    return true;
-}
 
 bool checkDoubleBasePalindromes(int number)
 {
