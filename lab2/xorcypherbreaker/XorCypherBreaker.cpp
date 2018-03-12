@@ -2,7 +2,6 @@
 // Created by krzysztof on 12.03.2018.
 //
 
-#include <cstring>
 #include "XorCypherBreaker.h"
 char CryptoAnalysis(vector<char> column) //most frequent letters in column
 {
@@ -43,7 +42,7 @@ vector<int> ChangeCurrent(vector<int> current,vector<char> Letters)
         temp[temp.size()-1]=0;
         temp[temp.size()-2]+=1;
     }
-    for(int a = 1;a<temp.size();a++)
+    for(int a = temp.size()-1;a>0;a--)
     {
         if(temp[a]> Letters.size()-1) {
             temp[a - 1] += 1;
@@ -82,20 +81,14 @@ string XorCypherBreaker(const vector<char> &cryptogram,
             key+= char(MostFrequent[a]^MostFrequentLetters[CurrentLetter[a]]);
         }
         string Decrypted = Decrypt(cryptogram,key);
-        int a = 0;
-        if(strstr(Decrypted.c_str(),dictionary[0].c_str()))
-            a+=1;
-        if(strstr(Decrypted.c_str(),dictionary[1].c_str()))
-            a++;
-        if(strstr(Decrypted.c_str(),dictionary[2].c_str()))
-            a++;
-        if(strstr(Decrypted.c_str(),dictionary[3].c_str()))
-            a++;
-        if(strstr(Decrypted.c_str(),dictionary[4].c_str()))
-            a++;
-        if(strstr(Decrypted.c_str(),dictionary[5].c_str()))
-            a++;
-        if(a > 1)
+
+        int counter = 0;
+        for(int a = 0;a<30;a++)
+        {
+            if(Decrypted.find(dictionary[a])!= string::npos)
+                counter++;
+        }
+        if(counter > 10)
             break;
         CurrentLetter = ChangeCurrent(CurrentLetter,MostFrequentLetters);
     }
