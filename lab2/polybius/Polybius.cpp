@@ -2,8 +2,8 @@
 // Created by krzysztof on 06.03.2018.
 //
 
+#include <sstream>
 #include "Polybius.h"
-#include <cstdlib>
 
 string FindNumber(char character)
 {
@@ -20,7 +20,7 @@ string FindNumber(char character)
         }
     }
     string temp;
-    char buff[2];
+    ostringstream oss;
     if(character == 'j')
         character = 'i';
     for(int a = 0; a<5; a++)
@@ -29,8 +29,8 @@ string FindNumber(char character)
         {
             if(Table[a][b]==character)
             {
-                itoa((a+1)*10+b+1,buff,10);
-                temp+=buff;
+                oss << (a+1)*10+b+1;
+                temp = oss.str();
                 return temp;
             }
         }
