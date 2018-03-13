@@ -3,6 +3,7 @@
 //
 #include "CCounter.h"
 #include <iostream>
+using namespace ccounter;
 
 int main()
 {
