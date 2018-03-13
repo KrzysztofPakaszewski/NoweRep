@@ -46,7 +46,7 @@ unsigned int minimaltimedifference::MinimalTimeDifference(vector<string> times)
     }
     int minimal;
     if(TimeMinute.size()>1)
-        minimal = TimeMinute[1]-TimeMinute[0];
+        minimal = 24*60 - TimeMinute[TimeMinute.size()-1]+TimeMinute[0];
     else
         return 0;
     for(int a = 1; a< TimeMinute.size(); a++)
