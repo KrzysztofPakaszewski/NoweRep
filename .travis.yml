@@ -47,7 +47,7 @@ script:
   - tests/lab2test/lab2_xor_cypher_breaker_tests
   - make lab3_minimal_time_difference_tests
   - tests/lab3test/lab3_minimal_time_difference_tests
-  - make lab3_c_counter
+  - make lab3_c_counter_tests
   - tests/lab3test/lab3_c_counter_tests
   
 notifications:
