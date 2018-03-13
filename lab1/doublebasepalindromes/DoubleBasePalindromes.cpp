@@ -5,6 +5,7 @@
 #include "DoubleBasePalindromes.h"
 #include "../palindrome/Palindrome.h"
 
+#include <cstdlib>
 
 bool checkDoubleBasePalindromes(int number)
 {

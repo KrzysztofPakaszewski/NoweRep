@@ -3,7 +3,7 @@
 //
 
 #include "Polybius.h"
-
+#include <cstdlib>
 
 string FindNumber(char character)
 {

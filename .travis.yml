@@ -23,8 +23,6 @@ script:
   - echo `which $CXX`
   - mkdir build && cd build;
     cmake -DCMAKE_CXX_COMPILER=$CXX ..
-  - make example_examplelibrary_tests
-  - tests/exampletest/example_examplelibrary_tests
   - make lab1_double_base_palindrome_tests
   - tests/lab1test/lab1_double_base_palindrome_tests
   - make lab2_array_2d_step1_tests
@@ -47,6 +45,10 @@ script:
   - tests/lab2test/lab2_polybius_step2_tests
   - make lab2_xor_cypher_breaker_tests
   - tests/lab2test/lab2_xor_cypher_breaker_tests
+  - make lab3_minimal_time_difference_tests
+  - tests/lab3test/lab3_minimal_time_difference_tests
+  - make lab3_c_counter
+  - tests/lab3test/lab3_c_counter_tests
   
 notifications:
   email: false

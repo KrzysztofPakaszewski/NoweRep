@@ -3,7 +3,7 @@
 //
 
 #include "MinimalTimeDifference.h"
-
+#include <cstdlib>
 
 unsigned int minimaltimedifference::ToMinutes(string time_HH_MM)
 {
