@@ -1,7 +1,7 @@
 //
 // Created by krzysztof on 12.03.2018.
 //
-
+#include <algorithm>
 #include "XorCypherBreaker.h"
 char CryptoAnalysis(vector<char> column) //most frequent letters in column
 {
@@ -81,14 +81,25 @@ string XorCypherBreaker(const vector<char> &cryptogram,
             key+= char(MostFrequent[a]^MostFrequentLetters[CurrentLetter[a]]);
         }
         string Decrypted = Decrypt(cryptogram,key);
-
-        int counter = 0;
-        for(int a = 0;a<30;a++)
+        vector<string> Words;
+        string temp;
+        for(int a = 0; a< Decrypted.size();a++)
         {
-            if(Decrypted.find(dictionary[a])!= string::npos)
+            if(Decrypted[a] == ' ')
+            {
+                Words.push_back(temp);
+                temp = "";
+            }
+            else
+                temp+=Decrypted[a];
+        }
+        int counter = 0;
+        for(int a = 0;a<10;a++)
+        {
+            if(find(Words.begin(),Words.end(),dictionary[a])!= Words.end())
                 counter++;
         }
-        if(counter > 10)
+        if(counter > 3)
             break;
         CurrentLetter = ChangeCurrent(CurrentLetter,MostFrequentLetters);
     }
