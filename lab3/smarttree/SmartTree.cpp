@@ -3,6 +3,7 @@
 //
 
 #include "SmartTree.h"
+#include <iostream>
 
 using namespace datastructures;
 
@@ -67,9 +68,27 @@ std::unique_ptr<SmartTree> datastructures::RestoreTree(const std::string &tree)
             temp+=tree[a];
         }
         auto pointer = CreateLeaf(stoi(temp, nullptr,10));
-        int counterLeft =1;
+        int counterLeft =0;
         int counterRight = 0;
-        temp ="[";
+        temp ="";
+        a+=1;
+        for(;a<tree.size()-1;a++)
+        {
+            temp+=tree[a];
+            if(tree[a] == '[')
+                counterLeft++;
+            if(tree[a] == ']')
+                counterRight++;
+            if(counterLeft == counterRight)
+                break;
+        }
+        if(counterLeft == 0)
+            pointer->left = nullptr;
+        else
+            pointer->left=RestoreTree(temp);
+        temp="";
+        counterLeft =0;
+        counterRight =0;
         a+=2;
         for(;a<tree.size()-1;a++)
         {
@@ -81,20 +100,10 @@ std::unique_ptr<SmartTree> datastructures::RestoreTree(const std::string &tree)
             if(counterLeft == counterRight)
                 break;
         }
-        pointer->left=RestoreTree(temp);
-        temp ="[";
-        a+=2;
-        for(;a<tree.size()-1;a++)
-        {
-            temp+=tree[a];
-            if(tree[a] == '[')
-                counterLeft++;
-            if(tree[a] == ']')
-                counterRight++;
-            if(counterLeft == counterRight)
-                break;
-        }
-        pointer->right=RestoreTree(temp);
+        if(counterLeft == 0)
+            pointer->right= nullptr;
+        else
+            pointer->right=RestoreTree(temp);
         return pointer;
     }
     return nullptr;
