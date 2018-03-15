@@ -14,9 +14,9 @@ std::unique_ptr<TinyUrlCodec> tinyurl::Init()
 void tinyurl::NextHash(std::array<char, 6> *state)
 {
     state->at(5) +=1;
-    for(int a = 5; a> 0; a++)
+    for(int a = 5; a>= 0; a--)
     {
-        if(state->at(a) == char(123))
+        if(state->at(a) == char(123) && a !=0)
         {
             state->at(a) = '0';
             state->at(a-1) +=1;
@@ -53,7 +53,7 @@ std::string tinyurl::Encode(const std::string &url, std::unique_ptr<TinyUrlCodec
     codec->operator->()->Url.push_back({temp,url});
     string Encoded;
     for(int a = 0; a< temp.size();a++)
-        Encoded+=codec->operator->()->Url[a].first[a];
+        Encoded+=temp[a];
     return Encoded;
 }
 

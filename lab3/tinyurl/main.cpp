@@ -5,8 +5,13 @@
 #include "TinyUrl.h"
 int main()
 {
-    char temp= 'a';
-    temp+=1l;
-    cout << temp<<endl;
+    array<char,6> temp = {'0','0','0','0','0','0'};
+    for(int a = 0; a< 6;a++)
+        cout << temp[a];
+    cout << endl;
+    tinyurl::NextHash(&temp);
+    for(int a = 0; a< 6;a++)
+        cout << temp[a];
+    cout << endl;
     return 0;
 }
