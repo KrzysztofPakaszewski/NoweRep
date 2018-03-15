@@ -59,6 +59,10 @@ script:
   - tests/lab3test/lab3_smart_tree_step4_tests
   - make lab3_smart_tree_step5_tests
   - tests/lab3test/lab3_smart_tree_step5_tests
+  - make lab3_tiny_url_step1_tests
+  - tests/lab3test/lab3_tiny_url_step1_tests
+  - make lab3_tiny_url_step2_tests
+  - tests/lab3test/lab3_tiny_url_step2_tests
 
 
 notifications:
