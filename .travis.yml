@@ -63,7 +63,8 @@ script:
   - tests/lab3test/lab3_tiny_url_step1_tests
   - make lab3_tiny_url_step2_tests
   - tests/lab3test/lab3_tiny_url_step2_tests
-
+  - make lab4_square_tests
+  - tests/lab4test/lab4_square_tests
 
 notifications:
   email: false
