@@ -65,6 +65,8 @@ script:
   - tests/lab3test/lab3_tiny_url_step2_tests
   - make lab4_square_tests
   - tests/lab4test/lab4_square_tests
+  - make lab4_name_tests
+  - tests/lab4test/lab4_name_tests
 
 notifications:
   email: false
