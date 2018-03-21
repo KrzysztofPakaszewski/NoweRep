@@ -49,14 +49,14 @@ optional<string> Name::SecondName() const
 {
     if(this->second_name_!="")
         return this->second_name_;
-    return {};
+    return optional<string>{};
 }
 
 optional<string> Name::ThirdName() const
 {
     if(this->third_name_!="")
         return this->third_name_;
-    return {};
+    return optional<string>{};
 }
 
 string Name::Surname() const
@@ -149,5 +149,23 @@ bool Name::IsBeforeBySurname(const Name &other) const
 }
 bool Name::IsBeforeByFirstName(const Name &other) const
 {
-
+    string tempCurrent = this->FirstName();
+    string tempOther=other.FirstName();
+    int a = 0;
+    while(a<tempCurrent.size() && a<tempOther.size())
+    {
+        if(int(tempCurrent[a])<97 )
+            tempCurrent[a]= char(int(tempCurrent[a])+32);
+        if(int(tempOther[a])<97 )
+            tempOther[a]= char(int(tempOther[a])+32);
+        if(int(tempCurrent[a])< int(tempOther[a]))
+            return true;
+        else if(int(tempCurrent[a])> int(tempOther[a]))
+            return false;
+        else
+            a++;
+    }
+    if(a==tempCurrent.size())
+        return true;
+    return false;
 }
