@@ -16,6 +16,7 @@ Square::Square(Point a, Point b, Point c, Point d):A(a),B(b),C(c),D(d) {}
 double FindSide(const Point square[4])
 {
     int counter=1;
+    int NumberOfChanges=0;
     double smallest =PointDistance(square[0],square[1]);
     for(int a = 0;a<3;a++)
     {
@@ -27,11 +28,12 @@ double FindSide(const Point square[4])
             if(temp < smallest) {
                 smallest = temp;
                 counter = 1;
+                NumberOfChanges++;
             } else if( smallest == temp)
                 counter+=1;
         }
     }
-    if(counter == 4)
+    if(counter == 4 || !(NumberOfChanges>1))
         return smallest;
     return 0;
 }
