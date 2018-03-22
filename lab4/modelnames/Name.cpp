@@ -27,7 +27,10 @@ Name::Name(const string &first_names_surname)
                 continue;
             if(matches[a]!="")
             {
-                *pointer[NameCount]=matches[a];
+                if(NameCount== 3)
+                    *pointer[NameCount]=matches[a];
+                else
+                    *pointer[NameCount-gap]=matches[a];
                 NameCount--;
                 NameCount-=gap;
                 gap=0;
