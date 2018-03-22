@@ -31,7 +31,7 @@ namespace nets {
         string choose() const;
         string GetInteger() const;
         string GetDouble() const;
-        string GetString() const;
+        string GetString(string) const;
         string GetBool() const;
         string GetMap() const;
         string GetArray() const;

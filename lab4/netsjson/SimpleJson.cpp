@@ -24,7 +24,7 @@ string JsonValue::choose() const
     else if(this->which==1)
         temp = this->GetDouble();
     else if(this->which==2)
-        temp = this->GetString();
+        temp = this->GetString(this->stringObject);
     else if(this->which==3)
         temp = this->GetBool();
     else if(this->which==4)
@@ -47,9 +47,24 @@ string JsonValue::GetDouble() const
     string temp = os.str();
     return temp;
 }
-string JsonValue::GetString() const
+string JsonValue::GetString(string item) const
 {
-    string temp = "\""+stringObject + "\"";
+    string temp = "\"";
+    string object = item;
+    for(int a = 0 ; a< object.size();a++)
+    {
+        if(object[a]== '\"')
+            temp += "\\\"";
+        else if(object[a] == '\t')
+            temp+= "\\\t";
+        else if(object[a] == '\n')
+            temp+="\\\n";
+        else if (object[a] == '\\')
+            temp+="\\\\";
+        else
+            temp+= object[a];
+    }
+    temp+= "\"";
     return temp;
 }
 string JsonValue::GetBool() const
@@ -65,7 +80,7 @@ string JsonValue::GetMap() const
     for(auto pointer = this->mapObject.begin(); pointer!=mapObject.end();pointer++)
     {
         if(pointer == this->mapObject.begin())
-            temp= temp +"\"" + pointer->first +"\": ";
+            temp= temp +GetString(pointer->first)+ ": ";
         else
             temp= temp +", " +"\"" + pointer->first +"\": ";
         temp += pointer->second.choose();
