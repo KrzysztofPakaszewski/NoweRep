@@ -4,6 +4,8 @@
 
 #include "Square.h"
 #include <vector>
+#include <iostream>
+
 using namespace std;
 using namespace geometry;
 
@@ -18,6 +20,8 @@ double FindSide(const Point square[4])
     int counter=1;
     int NumberOfChanges=0;
     double smallest =PointDistance(square[0],square[1]);
+    double other = smallest;
+    int NumberOfDifferent=1;
     for(int a = 0;a<3;a++)
     {
         for(int b=a+1; b < 4;b++)
@@ -25,15 +29,19 @@ double FindSide(const Point square[4])
             if(a == 0 && b==1)
                 b++;
             double temp = PointDistance(square[a],square[b]);
+            if(temp!= smallest && temp!= other) {
+                other = temp;
+                NumberOfDifferent++;
+            }
             if(temp < smallest) {
                 smallest = temp;
                 counter = 1;
                 NumberOfChanges++;
             } else if( smallest == temp)
-                counter+=1;
+                counter++;
         }
     }
-    if(counter == 4 || !(NumberOfChanges>1))
+    if(counter == 4 && NumberOfChanges <2 && NumberOfDifferent==2)
         return smallest;
     return 0;
 }
