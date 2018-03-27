@@ -15,37 +15,43 @@ MemoryChunk::MemoryChunk(size_t param)
 
 MemoryChunk::MemoryChunk(const MemoryChunk & other)
 {
-    delete[] pointer;
     pointer = new int8_t[other.ChunkSize()];
-    *pointer= *other.pointer;
+    for(int a = 0;a< other.ChunkSize();a++)
+    {
+        pointer[a] = other.pointer[a];
+    }
     size = other.ChunkSize();
 }
 
-MemoryChunk::MemoryChunk(MemoryChunk & other) {
-    delete[] pointer;
-    pointer = new int8_t[other.ChunkSize()];
-    *pointer =*other.pointer;
+MemoryChunk::MemoryChunk(MemoryChunk && other) {
+    pointer =other.pointer;
     size = other.ChunkSize();
     other.size = 0;
-    other.pointer = nullptr;
+    other.pointer= nullptr;
 }
 
 MemoryChunk& MemoryChunk ::operator=(const MemoryChunk & other)
 {
+    if(this == &other)
+        return *this;
     delete[] pointer;
     pointer = new int8_t[other.ChunkSize()];
-    *pointer= *other.pointer;
+    for(int a = 0;a< other.ChunkSize();a++)
+    {
+        pointer[a] = other.pointer[a];
+    }
     size = other.ChunkSize();
 }
 
-MemoryChunk& MemoryChunk::operator=(MemoryChunk & other)
+MemoryChunk& MemoryChunk::operator=(MemoryChunk && other)
 {
+    if(this == &other)
+        return *this;
     delete[] pointer;
-    pointer = new int8_t[other.ChunkSize()];
-    *pointer =*other.pointer;
+    pointer =other.pointer;
     size = other.ChunkSize();
     other.size = 0;
-    other.pointer = nullptr;
+    other.pointer= nullptr;
 }
 
 MemoryChunk::~MemoryChunk()
@@ -57,9 +63,11 @@ MemoryChunk::~MemoryChunk()
 
 int8_t* MemoryChunk::MemoryAt(size_t offset) const
 {
-    if(offset >= this->size)
+    if(pointer == nullptr)
         return nullptr;
-    return this->pointer+offset;
+    if(offset >= this->size || offset<0)
+        return nullptr;
+    return &this->pointer[offset];
 
 }
 

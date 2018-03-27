@@ -7,6 +7,7 @@
 
 #include <algorithm>
 #include <cstdint>
+using namespace std;
 
 namespace memorychunk {
     class MemoryChunk {
@@ -16,11 +17,11 @@ namespace memorychunk {
 
         MemoryChunk(const MemoryChunk & other);
 
-        MemoryChunk(MemoryChunk & other);
+        MemoryChunk(MemoryChunk && other);
 
         MemoryChunk &operator=(const MemoryChunk & other);
 
-        MemoryChunk &operator=(MemoryChunk & other);
+        MemoryChunk &operator=(MemoryChunk && other);
 
         ~MemoryChunk();
 
