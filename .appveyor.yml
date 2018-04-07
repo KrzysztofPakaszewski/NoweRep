@@ -29,5 +29,5 @@ before_build:
 build_script:
   - mingw32-make lab5_matrix_tests
   - dir tests
-  - dir tests\exampletest
+  - dir tests\lab5test
   - tests\lab5test\lab5_matrix_tests.exe
