@@ -30,4 +30,4 @@ build_script:
   - mingw32-make example_examplelibrary_tests
   - dir tests
   - dir tests\exampletest
-  - tests\exampletest\example_examplelibrary_tests.exe
+  - tests\lab5test\lab5_matrix_tests.exe
