@@ -49,3 +49,13 @@ size_t TextPool::StoredStringCount() const
 {
     return pool.size();
 }
+TextPool &TextPool::operator=(const TextPool && other)
+{
+    if(this == &other)
+        return *this;
+    pool=other.pool;
+}
+TextPool::TextPool(const TextPool && other)
+{
+    pool=other.pool;
+}

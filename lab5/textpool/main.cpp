@@ -21,4 +21,5 @@ int main() {
     cout << (s1 == s2 ? "True" : "False") << endl; //uchwyty są tymi samymi napisami co do wartości
     cout << pool.StoredStringCount() << endl; // w puli jest wciąż 5 napisów
     cout << (s1.begin() == s2.begin() ? "True" : "False") << endl; //na dodatek uchywyty s1 i s2 pokazują dokładnie na ten sam napis w puli (wskaźniki są identyczne)
+
 }

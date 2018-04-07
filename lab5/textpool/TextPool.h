@@ -18,6 +18,8 @@ namespace pool {
         TextPool();
         TextPool(TextPool && other);
         TextPool &operator=(TextPool && other);
+        TextPool &operator=(const TextPool && ohter);
+        TextPool(const TextPool && other);
         ~TextPool();
         TextPool(initializer_list<string>);
 
