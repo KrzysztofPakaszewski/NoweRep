@@ -31,3 +31,7 @@ build_script:
   - dir tests
   - dir tests\lab5test
   - tests\lab5test\lab5_matrix_tests.exe
+  - mingw32-make lab5_textpool_tests
+  - dir tests
+  - dir tests\lab5test
+  - tests\lab5test\lab5_textpool_tests.exe
