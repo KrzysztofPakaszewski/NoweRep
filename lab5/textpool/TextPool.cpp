@@ -29,33 +29,18 @@ TextPool::~TextPool()
 {
 
 }
-TextPool::TextPool(initializer_list<string> list)
+TextPool::TextPool(const initializer_list<experimental::string_view> list)
 {
     for(auto pointer = list.begin();pointer!=list.end();pointer++)
     {
-        if(pool.find(pointer[0]) == pool.end())
-            pool.insert(pointer[0]);
+        pool.emplace(*pointer);
     }
 }
 std::experimental::string_view TextPool::Intern(const std::string &str)
 {
-    if(pool.find(str)==pool.end())
-    {
-        pool.insert(str);
-    }
-    return *pool.find(str);
+    return *pool.emplace(str).first;
 }
 size_t TextPool::StoredStringCount() const
 {
     return pool.size();
-}
-TextPool &TextPool::operator=(const TextPool && other)
-{
-    if(this == &other)
-        return *this;
-    pool=other.pool;
-}
-TextPool::TextPool(const TextPool && other)
-{
-    pool=other.pool;
 }
