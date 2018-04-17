@@ -32,7 +32,7 @@ int main()
      *
      * p3d został potraktowany jako obiekt klasy Point
      *
-     * 
+     *
      */
 
 
