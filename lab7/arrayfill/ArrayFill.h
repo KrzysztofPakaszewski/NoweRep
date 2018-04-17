@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <random>
+#include <memory>
 using namespace std;
 namespace arrays {
     class Base {
@@ -16,7 +17,7 @@ namespace arrays {
     };
     class IncrementalFill: public Base{
     public:
-        IncrementalFill(int start,int step =0);
+        IncrementalFill(int start,int step =1);
         int Get_Value(int index){
             return start+index*step;
         }
@@ -36,7 +37,7 @@ namespace arrays {
     };
     class SquaredFill: public Base{
     public:
-        SquaredFill(int a=1, int b=1);
+        SquaredFill(int a=1, int b=0);
         int Get_Value(int index){
             return a*index*index+b;
         }
@@ -47,8 +48,15 @@ namespace arrays {
     };
     class RandomFill : public Base{
     public:
+        RandomFill(unique_ptr<default_random_engine> , unique_ptr<uniform_int_distribution<int>>);
         int Get_Value(int index){
+            return distribution->operator()(*generator);
         }
+
+    private:
+        unique_ptr< default_random_engine > generator;
+        unique_ptr<uniform_int_distribution<int>> distribution;
+
 
     };
     void FillArray(int size, Base&, vector<int>*);
