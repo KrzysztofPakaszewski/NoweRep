@@ -5,9 +5,9 @@
 #include "Iterable.h"
 using namespace utility;
 int main(){
-    vector<int>v1{1,2,3};
-    vector<string>v2{"a","b","c"};
-    for(const auto &ptr :Zipper(v1,v2)){
+    const vector<int> vi {7, -3};
+    const vector<string> vs {"4", "9991", "adfskld"};
+    for(const auto &ptr :Product(vi,vs)){
         cout << "(" << ptr.first << ", \"" << ptr.second << "\") \n";
     }
 

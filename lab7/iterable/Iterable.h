@@ -67,6 +67,57 @@ namespace utility {
         vector<string> second;
 
     };
+    class ProductIterator : public IterableIterator{
+    public:
+        explicit ProductIterator(std::vector<int>::const_iterator left,
+        std::vector<std::string>::const_iterator right,
+                std::vector<int>::const_iterator left_end,
+        std::vector<std::string>::const_iterator right_end,
+                                 std::vector<std::string>::const_iterator right_start);
+        pair<int,string> Dereference() const override;
+        IterableIterator& Next() override ;
+        bool NotEquals(const unique_ptr<IterableIterator> &other) const override ;
+
+    private:
+        vector<int>::const_iterator left;
+        vector<string>::const_iterator right;
+        vector<int>::const_iterator left_end;
+        vector<string>::const_iterator right_end;
+        vector<std::string>::const_iterator right_start;
+    };
+
+    class Product: public Iterable{
+    public:
+        Product(vector<int>, vector<string>);
+        unique_ptr<IterableIterator> ConstBegin() const override;
+        std::unique_ptr<IterableIterator> ConstEnd() const override;
+
+    private:
+        vector<int> first;
+        vector<string> second;
+    };
+
+    class EnumerateIterator:public IterableIterator{
+    public:
+        explicit EnumerateIterator(vector<string>::const_iterator begin,vector<string>::const_iterator end);
+        pair<int,string> Dereference() const override;
+        IterableIterator& Next() override ;
+        bool NotEquals(const unique_ptr<IterableIterator> &other) const override ;
+
+    private:
+        vector<string>::const_iterator begin;
+        size_t index;
+        vector<string>::const_iterator end;
+    };
+    class Enumerate :public Iterable{
+    public:
+        Enumerate(vector<string>);
+        unique_ptr<IterableIterator> ConstBegin() const override;
+        std::unique_ptr<IterableIterator> ConstEnd() const override;
+
+    private:
+        vector<string> first;
+    };
 }
 
 
