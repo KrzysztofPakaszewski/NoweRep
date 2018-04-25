@@ -55,6 +55,7 @@ script:
   - make lab7_iterable_zipper_iterator_tests
   - make lab7_iterable_iterator_wrapper_tests
   - make lab7_iterable_enumeration_tests
+  - make lab8_pesel_tests
   - make lab8_micro_dvd_correct_cases_tests
   - make lab8_micro_dvd_error_cases_tests
   - make lab8_movie_subtitles_tests
