@@ -28,10 +28,10 @@ pair<int,string> ZipperIterator::Dereference() const{
 IterableIterator& ZipperIterator::Next()
 {
     if(left+1!= left_end) {
-        left++;
+        ++left;
     }
     if(right+1 != right_end){
-        right++;
+        ++right;
     }
     if(left+1 == left_end && right+1 == right_end)
     {
@@ -110,10 +110,10 @@ pair<int,string> ProductIterator::Dereference() const{
 IterableIterator& ProductIterator::Next()  {
     if(left==left_end )
         return *this;
-    right++;
+    ++right;
     if(right == right_end )
     {
-        left++;
+        ++left;
         if(left !=left_end) {
             right = right_start;
         }
@@ -142,8 +142,8 @@ pair<int,string> EnumerateIterator::Dereference() const {
 };
 IterableIterator& EnumerateIterator::Next()  {
     if(begin != end) {
-        begin++;
-        index++;
+        ++begin;
+        ++index;
     }
     return *this;
 }
