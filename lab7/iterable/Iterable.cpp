@@ -11,32 +11,25 @@ ZipperIterator::ZipperIterator(std::vector<int>::const_iterator left, std::vecto
         left(left),right(right), left_end(left_end),right_end(right_end){}
 
 pair<int,string> ZipperIterator::Dereference() const{
-    if(right == right_end || left==left_end){
-        pair<int,string> temp;
-        if(right == right_end)
-            temp.first=0;
-        else
-            temp.first=*left;
-        if(left==left_end)
-            temp.second="";
-        else
-            temp.second=*right;
-        return temp;
+    if(right == right_end && left==left_end){
+        return pair<int,string>{0,""};
     }
     return pair<int,string>{*left, *right};
 };
 IterableIterator& ZipperIterator::Next()
 {
-    if(left+1!= left_end) {
-        ++left;
-    }
-    if(right+1 != right_end){
-        ++right;
-    }
     if(left+1 == left_end && right+1 == right_end)
     {
         left = left_end;
         right=right_end;
+    }
+    else {
+        if (left + 1 != left_end) {
+            ++left;
+        }
+        if (right + 1 != right_end) {
+            ++right;
+        }
     }
     return *this;
 }
