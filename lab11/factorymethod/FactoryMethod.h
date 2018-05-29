@@ -14,7 +14,7 @@ using namespace std;
 namespace factoryMethod {
     template<class T>
     T Create() {
-        return *make_unique<T>();
+        return T();
     };
 
     class MyType{
@@ -42,7 +42,7 @@ T Value(const T* first){
 //Mean
 template<class T>
 auto Mean(vector<T> list){
-    T temp=0;
+    T temp=factoryMethod::Create();
     partial_sum(list.begin(),list.end(),[temp](T first){temp+=first;});
     return temp/list.size();
 }
