@@ -72,6 +72,7 @@ script:
   - make lab12_tree_preorder_tests
   - make lab12_tree_inorder_tests
   - make lab12_tree_postorder_tests
+  - make lab12_tree_tests
   - cd .. && echo RUNNING ALL COMPILED TESTS
   - find build/tests/ -type f -name '*tests' -exec {} \;
   - echo RUNNING CPPCHECK STATIC ANALYSIS

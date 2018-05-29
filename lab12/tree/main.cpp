@@ -4,6 +4,5 @@
 #include "Tree.h"
 
 int main(){
-    tree::Tree<int>(2);
     return 0;
 }

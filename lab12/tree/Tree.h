@@ -10,31 +10,6 @@
 using namespace std;
 namespace tree {
     template<class T>
-    class Element {
-    public:
-        Element(const T &elem) {
-            data = elem;
-            left = nullptr;
-            right = nullptr;
-            parent = nullptr;
-        }
-
-        unique_ptr<Element> Left() { return left; }
-
-        unique_ptr<Element> Right() { return right; }
-
-        unique_ptr<Element> Parent() { return parent; }
-
-        T Data() { return data; }
-
-    private:
-        T data;
-        unique_ptr<Element> left;
-        unique_ptr<Element> right;
-        unique_ptr<Element> parent;
-    };
-
-    template<class T>
     class Tree {
     public:
         Tree():size(0){}
@@ -43,14 +18,18 @@ namespace tree {
             root = elem;
             size=1;
             depth=1;
+            Left = nullptr;
+            Right = nullptr;
         }
 
         void Insert(const T &elem) {
             if (size == 0) {
                 root = elem;
                 depth=1;
+                Left = nullptr;
+                Right = nullptr;
             } else {
-                size_t Newdepth =1;
+                size_t Newdepth =2;
                 unique_ptr<Tree>* next;
                 if (elem < root)
                     next = &Left;
@@ -58,12 +37,11 @@ namespace tree {
                     next = &Right;
 
                 while (*next != nullptr) {
-                    if (elem < root)
-                        next = &Left;
+                    if (elem < next->operator->()->Value())
+                        next = &next->operator->()->Left;
                     else
-                        next = &Right;
+                        next = &next->operator->()->Right;
                     Newdepth++;
-
                 }
                 if( Newdepth> depth)
                     depth= Newdepth;
@@ -73,12 +51,12 @@ namespace tree {
         }
 
         bool Find(const T &elem){
-            unique_ptr<Tree> *next;
-            while( next->Value() != elem && next != nullptr) {
-                if (elem < root)
-                    next = *Left;
+            unique_ptr<Tree> *next= this;
+            while( *next != nullptr && next->operator->()->Value() != elem) {
+                if (elem < next->operator->()->Value())
+                    next = &next->operator->()->Left;
                 else
-                    next = *Right;
+                    next = &next->operator->()->Right;
 
             }
             if(next == nullptr)
