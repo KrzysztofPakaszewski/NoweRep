@@ -25,8 +25,8 @@ namespace academia {
         TeacherId Id() const;
         string Name() const;
         string Department() const;
-        operator!=(const Teacher& other)const;
-        operator==(const Teacher& other)const;
+        bool operator!=(const Teacher& other)const;
+        bool operator==(const Teacher& other)const;
     private:
         TeacherId id;
         string name;

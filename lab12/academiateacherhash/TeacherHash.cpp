@@ -22,9 +22,9 @@ bool TeacherId::operator!=(const TeacherId& other) const{
     return (int)(*this) != (int)(other);
 }
 
-Teacher::operator!=(const Teacher& other)const{
+bool Teacher::operator!=(const Teacher& other)const{
     return this->Id()!= other.Id() || this->Name() != other.Name() || this->Department()!= other.Department();
 }
-Teacher::operator==(const Teacher& other)const{
+bool Teacher::operator==(const Teacher& other)const{
     return this->Id()== other.Id() && this->Name() == other.Name() && this->Department()== other.Department();
 }
