@@ -43,7 +43,7 @@ namespace tree {
                     next = &Right;
                 unique_ptr<Tree<T>>* temp = next;
                 while (*next != nullptr) {
-                    if (elem < temp->operator->()->Value()) {
+                    if (elem < next->operator->()->Value()) {
                         temp = next;
                         next = &next->operator->()->Left;
                     }
