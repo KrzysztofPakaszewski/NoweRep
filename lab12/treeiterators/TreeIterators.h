@@ -112,7 +112,6 @@ namespace tree {
             }
             else
             {
-                prev =Node;
                 Node=Node->Parent();
             }
         }
@@ -122,8 +121,6 @@ namespace tree {
 
     private:
         Tree<T>* Node;
-        Tree<T>* prev;
-
     };
     template<class T>
     class PostOrderTreeView{
