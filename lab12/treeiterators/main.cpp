@@ -19,9 +19,5 @@ int main(){
     test_tree.Insert("Xiuhtecuhtli");
     for( const string &a : tree::PreOrder(&test_tree))
         cout<< a << endl;
-    if("Xanticp" > "Toci")
-        cout << "true";
-    else
-        cout << "false";
     return 0;
 }

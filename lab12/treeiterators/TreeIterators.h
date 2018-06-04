@@ -94,9 +94,6 @@ namespace tree {
     public:
         PostOrderTreeIterator(Tree<T>* node){
             Node = node;
-            while( Node->LeftTree()!= nullptr){
-                Node = Node->LeftTree();
-            }
         }
         T operator*() const{
             return Node->Value();
