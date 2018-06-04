@@ -11,11 +11,11 @@ using namespace std;
 
 namespace profiling {
     template <typename T>
-    auto TimeRecorder(const T &&function){
-        chrono::steady_clock::time_point start = chrono::steady_clock::now();
-        function();
-        chrono::steady_clock::time_point end = chrono::steady_clock::now();
-        return pair<T,double>{function(), chrono::duration_cast<chrono::milliseconds>(end-start).count()};
+    auto TimeRecorder(T function ){
+        chrono::high_resolution_clock::time_point start = chrono::high_resolution_clock::now();
+        auto temp =function();
+        chrono::high_resolution_clock::time_point end = chrono::high_resolution_clock::now();
+        return make_pair(temp, chrono::duration_cast<chrono::milliseconds>(end-start).count());
     };
 }
 
